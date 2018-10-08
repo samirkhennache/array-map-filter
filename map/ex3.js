@@ -60,9 +60,50 @@ En sortie:
  */
 
 function getMoviesFreshness(movies) {
+
+   const objs = movies.map(element =>{
+      
+
+    if(element.rating <60)
+      element.label ='rotten';
+    else if(element.rating >= 60 && element.rating <= 75)
+      element.label ='fresh';
+    else
+    element.label ='certified fresh';
+     
+    return{
+      name :element.name,
+      rating:element.rating,
+      label : element.label
+
+    }
+
+    })
+
+    return objs;
+
 }
 
+movies =[
+  {
+    name: 'Crazy Rich Asians',
+    rating: 93
+  },
+  {
+    name: 'Skyscraper',
+    rating: 46
+  },
+  {
+    name: 'Leave No Trace',
+    rating: 100
+  },
+  {
+    name: 'White Boy Rick',
+    rating: 60
+  }
+]
 
+console.log(getMoviesFreshness(movies));
 
 // Ne pas modifier l'export
 module.exports = getMoviesFreshness;

@@ -43,6 +43,15 @@ En sortie: [
  */
 
 function getFoodCategories(foods) {
+
+  let myArray =[];
+
+  myArray = foods.map(element =>{
+    return(element.isVegetarian?`${element.food} is suitable for vegetarians`:`${element.food} is not suitable for vegetarians`)
+  })
+
+return (myArray)
+
 }
 
 
