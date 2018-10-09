@@ -25,6 +25,30 @@ Sortie attendue:
 */
 
 function getCampusesTeachingReact(campuses) {
+      
+      const cities =[]
+      campuses.map(school => {          
+       school.curriculums.filter(e =>{
+           
+             if(e ==='JS/React')
+             {       
+               cities.push(school.city)
+             } 
+          })       
+    })
+  return (cities);
 }
+
+tab =[
+  { city: 'Bordeaux', curriculums: ['PHP/Symfony', 'JS/React'] },
+  { city: 'La Loupe', curriculums: ['JS/Angular'] },
+  { city: 'Lille', curriculums: ['PHP/Symfony', 'JS/React'] },
+  { city: 'Marseille', curriculums: ['JS/React'] },
+  { city: 'Orléans', curriculums: ['PHP/Symfony'] },
+  { city: 'Reims', curriculums: ['JS/React'] },
+  { city: 'Toulouse', curriculums: ['JEE/Android', 'JS/React'] }
+]
+getCampusesTeachingReact(tab);
+
 
 module.exports = getCampusesTeachingReact;

@@ -1,3 +1,4 @@
+
 /* Array.prototype.map ET filter - Exercice 3
 
 Variation sur l'exercice précédent: la fonction getStudentsPerCurriculum reçoit cette fois deux arguments.
@@ -51,6 +52,67 @@ Sortie attendue:
 */
 
 function getStudentsPerCurriculum(campuses, curriculumName) {
+   
+   let objs =[]
+   campuses.map(school => {          
+   school.curriculums.filter(e =>{
+       
+         if(e.name === curriculumName)
+         {  
+          const obj ={}         
+          Object.defineProperty(obj, school.city, {
+            value:  e.numStudents,
+            writable: false, 
+            enumerable: true, 
+            configurable: false 
+         });
+        
+        objs.push(obj);
+         
+         
+         
+         } 
+         
+      })       
+})
+
+return objs
 }
+
+
+tab =[
+  { city: 'Bordeaux',
+    curriculums: [
+      { name: 'PHP/Symfony', numStudents: 12 },
+      { name: 'JS/React', numStudents: 29 }
+    ]
+  },
+  {
+    city: 'La Loupe',
+    curriculums: [
+      { name: 'JS/Angular', numStudents: 32 }
+    ]
+  },
+  {
+    city: 'Lille',
+    curriculums: [
+      { name: 'PHP/Symfony', numStudents: 12 },
+      { name: 'JS/React', numStudents: 10 }
+    ]
+  },
+  {
+    city: 'Marseille',
+    curriculums: [
+      { name: 'JS/React', numStudents: 16 }
+    ]
+  }
+]
+
+
+getStudentsPerCurriculum(tab,'PHP/Symfony');
+
+
+
+
 
 module.exports = getStudentsPerCurriculum;
