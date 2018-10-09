@@ -31,14 +31,27 @@ function filterOffensiveComments(comments, bannedWords) {
      
 
     
-    return comments.filter( element =>{       
-        
-          if(element.toLowerCase().includes(bannedWords[0].toLowerCase())==false && element.toLowerCase().includes(bannedWords[1].toLowerCase()) ==false )
-          return element;
-      })
-    
-      
+    // return comments.filter( element =>{ 
+           
+     
 
+    //       if(element.toLowerCase().includes(bannedWords[0].toLowerCase())==false && element.toLowerCase().includes(bannedWords[1].toLowerCase()) ==false )
+    //       return element;
+    //   })
+    
+    bannedWords.map(word =>{
+        comments.filter((element,index) =>{
+          if(element.toLowerCase().includes(word)){
+            console.log('avant '+comments);
+            
+             comments.splice(index,1)  
+             console.log('apres '+comments);
+
+            }          
+        })
+        
+    })
+    return(comments)
   }
 
    
